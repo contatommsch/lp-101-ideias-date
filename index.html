@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Título do Produto | Oferta Oficial</title>
+  <meta name="description" content="Subtítulo objetivo em 1 frase: o que a pessoa vai conseguir + para quem é + benefício central." />
+  <meta property="og:title" content="Título do Produto | Oferta Oficial" />
+  <meta property="og:description" content="Descrição curta que apareça bem no WhatsApp/Instagram." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=Imagem+da+Oferta" />
+  <meta name="theme-color" content="#0ea5e9" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b1020; /* fundo geral escuro, troque se preferir claro */
+      --card:#0f172a; /* cartões */
+      --text:#e5e7eb; /* texto */
+      --muted:#9ca3af; /* texto secundário */
+      --primary:#0ea5e9; /* cor principal do CTA */
+      --primary-contrast:#001018; /* texto do CTA */
+      --accent:#22c55e; /* cor de destaque (garantia/selo) */
+      --warning:#f59e0b; /* contagem regressiva */
+      --danger:#ef4444; /* "últimas vagas" */
+      --maxw:1120px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;}
+    a{color:inherit}
+    .container{max-width:var(--maxw);margin-inline:auto;padding:24px}
+    .nav{position:sticky;top:0;background:rgba(11,16,32,.75);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.06);z-index:50}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .logo{display:flex;align-items:center;gap:10px;font-weight:700}
+    .badge{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.06);font-size:12px;color:var(--muted)}
+    .grid{display:grid;gap:24px}
+    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:24px}
+    h1{font-size:clamp(28px,3.2vw,46px);line-height:1.1;margin:0}
+    h2{font-size:clamp(22px,2.4vw,34px);line-height:1.15;margin:0 0 10px 0}
+    p{color:var(--text);opacity:.92}
+    .muted{color:var(--muted)}
+    .price{font-size:clamp(30px,3.2vw,40px);font-weight:800}
+    .strike{opacity:.6;text-decoration:line-through;margin-right:8px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 18px;border-radius:12px;font-weight:700;text-decoration:none;border:1px solid transparent;transition:.2s}
+    .btn-primary{background:var(--primary);color:#fff;border-color:rgba(255,255,255,.12)}
+    .btn-primary:hover{filter:brightness(1.05)}
+    .btn-outline{background:transparent;border-color:rgba(255,255,255,.2);color:var(--text)}
+    .bullet{display:flex;gap:12px;align-items:flex-start}
+    .bullet i{width:22px;height:22px;display:inline-grid;place-items:center;border-radius:999px;background:rgba(34,197,94,.15);color:var(--accent);font-style:normal}
+    .columns-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .columns-2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+    .faq summary{cursor:pointer;list-style:none;font-weight:600;padding:16px;border-radius:12px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06)}
+    .faq details{margin-bottom:12px}
+    .faq details[open] summary{background:rgba(255,255,255,.07)}
+    .faq p{margin:12px 0 0 0}
+    .testimonial{display:flex;gap:14px;align-items:flex-start}
+    .avatar{width:44px;height:44px;border-radius:999px;background:#fff;flex-shrink:0}
+    .cta-sticky{position:fixed;inset:auto 12px 12px 12px;display:flex;gap:10px;align-items:center;justify-content:space-between;padding:10px 12px;background:linear-gradient(90deg, rgba(14,165,233,.95), rgba(34,197,94,.95));color:#001014;border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,.35);z-index:60}
+    .cta-sticky .btn{padding:10px 14px;border-radius:10px;background:#001014;color:#fff}
+    .countdown{font-variant-numeric:tabular-nums;font-weight:800}
+    .seal{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:rgba(34,197,94,.15);color:var(--accent);border:1px solid rgba(34,197,94,.35);font-weight:600}
+    .footer{color:var(--muted);font-size:14px}
+    .whatsapp{position:fixed;right:14px;bottom:78px;background:#25D366;color:#fff;width:54px;height:54px;border-radius:999px;display:grid;place-items:center;box-shadow:0 10px 25px rgba(0,0,0,.35);z-index:60;text-decoration:none;font-weight:800}
+    .section{scroll-margin-top:80px}
+    @media (max-width: 980px){
+      .hero{grid-template-columns:1fr}
+      .columns-3{grid-template-columns:1fr}
+      .columns-2{grid-template-columns:1fr}
+      .nav .badge{display:none}
+    }
+  </style>
+</head>
+<body>
+  <!-- Barra de navegação -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="logo">✨ Seu Produto</div>
+      <nav style="display:flex; gap:10px; align-items:center">
+        <a class="badge" href="#beneficios">Benefícios</a>
+        <a class="badge" href="#conteudo">Conteúdo</a>
+        <a class="badge" href="#faq">Dúvidas</a>
+        <a class="btn btn-primary" href="https://exemplo.com/checkout?utm_source=site&utm_medium=btn-topo" target="_blank" rel="noopener">Comprar agora</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="container section" style="padding-top:28px">
+    <div class="hero">
+      <div class="card">
+        <h1>Headline forte que prometa <span style="color:var(--primary)">um resultado desejado</span> em X dias/semanas</h1>
+        <p class="muted">Sub-head direta: para quem é, como funciona e o principal ganho.
+        </p>
+        <div class="grid" style="gap:12px;margin:16px 0">
+          <div class="bullet"><i>✓</i><div>Benefício 1 curto e específico</div></div>
+          <div class="bullet"><i>✓</i><div>Benefício 2 com prova/medida</div></div>
+          <div class="bullet"><i>✓</i><div>Benefício 3 removendo objeção</div></div>
+        </div>
+        <div style="display:flex;align-items:flex-end;gap:16px;flex-wrap:wrap">
+          <div>
+            <div class="muted">De</div>
+            <div class="strike">R$ 497,00</div>
+          </div>
+          <div>
+            <div class="muted">Por</div>
+            <div class="price">12× de R$ 19,70</div>
+            <div class="muted">ou R$ 197 à vista</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:16px">
+          <!-- SUBSTITUA a URL abaixo pela sua URL real de checkout (Hotmart/Stripe/Mercado Pago etc.) -->
+          <a class="btn btn-primary" href="https://exemplo.com/checkout?utm_source=site&utm_medium=btn-hero" target="_blank" rel="noopener">Comprar agora</a>
+          <a class="btn btn-outline" href="#conteudo">Ver o que você recebe</a>
+        </div>
+        <div style="display:flex;gap:12px;align-items:center;margin-top:16px">
+          <span class="seal">✅ Garantia incondicional de 7 dias</span>
+          <span class="muted">Pagamento 100% seguro</span>
+        </div>
+      </div>
+      <div class="card" style="min-height:320px">
+        <!-- Coloque aqui um vídeo incorporado (YouTube/Vimeo) ou imagem mockup -->
+        <div style="aspect-ratio:16/9;background:#0b1326;border-radius:12px;border:1px dashed rgba(255,255,255,.18);display:grid;place-items:center">Vídeo/Imagem da Oferta</div>
+        <div class="muted" style="margin-top:10px">Explique em 60–90s o que a pessoa vai alcançar, para quem é, como funciona e próxima ação.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROVAS/SELOS -->
+  <section class="container section">
+    <div class="columns-3">
+      <div class="card testimonial"><div class="avatar"></div><div><strong>Nome da pessoa</strong><br/><span class="muted">“Depoimento curto e específico, com número/resultado e prazo.”</span></div></div>
+      <div class="card testimonial"><div class="avatar"></div><div><strong>Nome da pessoa</strong><br/><span class="muted">“Outra prova: antes/depois, barreira removida, sensação.”</span></div></div>
+      <div class="card testimonial"><div class="avatar"></div><div><strong>Nome da pessoa</strong><br/><span class="muted">“Mais uma prova: capture objeção (tempo, dinheiro, dificuldade).”</span></div></div>
+    </div>
+  </section>
+
+  <!-- BENEFÍCIOS -->
+  <section id="beneficios" class="container section">
+    <div class="columns-3">
+      <div class="card"><h2>Benefício 1</h2><p>Explique em 2–3 linhas o porquê esse benefício importa e como é entregue.</p></div>
+      <div class="card"><h2>Benefício 2</h2><p>Detalhe a transformação com uma pequena prova (print/indicador).</p></div>
+      <div class="card"><h2>Benefício 3</h2><p>Como você reduz risco/tempo/esforço versus alternativas.</p></div>
+    </div>
+  </section>
+
+  <!-- O QUE VOCÊ RECEBE / CONTEÚDO -->
+  <section id="conteudo" class="container section">
+    <div class="columns-2">
+      <div class="card">
+        <h2>Você recebe</h2>
+        <ul>
+          <li>Módulo 1 — descrição objetiva</li>
+          <li>Módulo 2 — descrição objetiva</li>
+          <li>Bônus 1 — descrição objetiva</li>
+          <li>Template/Comunidade/Suporte — detalhe</li>
+        </ul>
+        <div style="margin-top:14px">
+          <a class="btn btn-primary" href="https://exemplo.com/checkout?utm_source=site&utm_medium=btn-conteudo" target="_blank" rel="noopener">Quero garantir minha vaga</a>
+        </div>
+      </div>
+      <div class="card">
+        <h2>Para quem é / não é</h2>
+        <p><strong>É para quem</strong> … lista de 3–5 pontos curtos.</p>
+        <p><strong>Não é para quem</strong> … 2–3 pontos honestos que aumentam confiança.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- GARANTIA / URGÊNCIA CONTROLADA -->
+  <section class="container section">
+    <div class="card" style="display:flex;gap:18px;align-items:center;flex-wrap:wrap;justify-content:space-between">
+      <div style="display:flex;gap:12px;align-items:center"><span class="seal">🛡️ 7 dias de garantia</span><span class="muted">Se não for para você, devolvemos 100%.</span></div>
+      <div class="muted">Preço promocional encerra em <span class="countdown" id="count">00:00:00</span></div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="container section">
+    <div class="faq">
+      <details>
+        <summary>Como funciona o acesso após a compra?</summary>
+        <p>Explique de forma simples o passo a passo e o tempo de liberação.</p>
+      </details>
+      <details>
+        <summary>Quais formas de pagamento são aceitas?</summary>
+        <p>Cartão em até X vezes, Pix, boleto (se houver). Diga como o pagamento é processado.</p>
+      </details>
+      <details>
+        <summary>Existe suporte?</summary>
+        <p>Como a pessoa tira dúvidas (e‑mail, WhatsApp, comunidade).</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="container section">
+    <div class="card" style="text-align:center">
+      <h2>Pronto para começar?</h2>
+      <p class="muted">Último empurrão com síntese da transformação + garantia.</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+        <a class="btn btn-primary" href="https://exemplo.com/checkout?utm_source=site&utm_medium=btn-final" target="_blank" rel="noopener">Comprar agora</a>
+        <a class="btn btn-outline" href="https://wa.me/5500000000000?text=Tenho%20uma%20d%C3%BAvida%20sobre%20o%20produto" target="_blank" rel="noopener">Falar no WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- RODAPÉ -->
+  <footer class="container footer">
+    <div class="grid" style="gap:6px">
+      <div>© <span id="year"></span> Sua Marca. Todos os direitos reservados.</div>
+      <div><a href="#">Termos de uso</a> · <a href="#">Política de privacidade</a> · <a href="#">LGPD</a></div>
+    </div>
+  </footer>
+
+  <!-- CTA STICKY (mobile) -->
+  <div class="cta-sticky" id="sticky">
+    <span><strong>Oferta ativa</strong> — garanta agora</span>
+    <a class="btn" href="https://exemplo.com/checkout?utm_source=site&utm_medium=btn-sticky" target="_blank" rel="noopener">Comprar</a>
+  </div>
+
+  <!-- BOTÃO WHATSAPP FLOTANTE (opcional) -->
+  <a class="whatsapp" aria-label="Abrir WhatsApp" href="https://wa.me/5500000000000?text=Quero%20saber%20mais" target="_blank" rel="noopener">WA</a>
+
+  <script>
+    // Ano no rodapé
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Contagem regressiva simples (ajuste a data/hora abaixo)
+    const end = new Date();
+    end.setHours(end.getHours() + 6); // 6 horas a partir de agora
+    function two(n){return n.toString().padStart(2,'0')}
+    const el = document.getElementById('count');
+    setInterval(()=>{
+      const now = new Date();
+      let diff = Math.max(0, end - now);
+      const h = Math.floor(diff/3.6e6); diff -= h*3.6e6;
+      const m = Math.floor(diff/6e4); diff -= m*6e4;
+      const s = Math.floor(diff/1e3);
+      if(el) el.textContent = `${two(h)}:${two(m)}:${two(s)}`;
+    }, 1000);
+
+    // Esconde sticky CTA quando o usuário está vendo um CTA visível na tela
+    const sticky = document.getElementById('sticky');
+    const observer = new IntersectionObserver(entries =>{
+      entries.forEach(e=>{ sticky.style.display = e.isIntersecting ? 'none' : 'flex'; })
+    },{threshold:0.4});
+    // Observe a seção CTA final
+    const ctaFinal = document.querySelector('section.container.section:last-of-type');
+    if(ctaFinal) observer.observe(ctaFinal);
+  </script>
+
+  <!-- JSON-LD para SEO básico de produto/oferta -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Título do Produto",
+    "description": "Resumo curto e objetivo da transformação entregue.",
+    "image": ["https://via.placeholder.com/800x450.png?text=Produto"],
+    "brand": {"@type":"Brand","name":"Sua Marca"},
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "BRL",
+      "price": "197.00",
+      "availability": "https://schema.org/InStock",
+      "url": "https://exemplo.com/checkout"
+    }
+  }
+  </script>
+
+  <!-- PIXELS (cole seus IDs e descomente) -->
+  <!-- Meta Pixel
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', 'COLOQUE_SEU_PIXEL_AQUI');
+    fbq('track', 'PageView');
+    fbq('track', 'ViewContent');
+  </script> -->
+  <!-- Google Analytics 4
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);} gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script> -->
+</body>
+</html>
